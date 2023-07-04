@@ -1,0 +1,52 @@
+.strike {
+    display: none;
+
+}
+
+.drop_down {
+    display: flex;
+    justify-content: flex-end;
+    width: 258px;
+    height: 35px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+    padding-top: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.drop_down:hover {
+    background-color: rgba(222, 222, 222, 1);
+}
+
+.arrow {
+    width: 20.6px;
+    height: 14px;
+    margin-right: 10px;
+    background-image: url(../../../img/arrow_to_down.svg);
+}
+
+
+.board_items {
+    display: flex;
+    align-items: center;
+    width: 258px;
+    height: 43px;
+    padding-left: 7px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.board_items:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+.board_items:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+.board_items:hover {
+    background-color: rgba(222, 222, 222, 1);
+}
