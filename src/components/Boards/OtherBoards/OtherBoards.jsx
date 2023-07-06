@@ -1,13 +1,12 @@
 import { useState } from "react";
 import s from "./OtherBoards.module.css";
 
-const OtherBoard = ({ boardData, prevBoardData, addTask, removeTask }) => {
+const OtherBoard = ({ boardData, prevBoardData, addTask }) => {
   const [btn, setBtn] = useState(false);
 
   const handleTask = (item) => {
-    console.log(item);
+    setBtn(!btn);
     addTask(item, boardData.id);
-    // removeTask(item, prevBoardData.id);
   };
 
   return (

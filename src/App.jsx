@@ -3,30 +3,37 @@ import "./App.css";
 import UserMenu from "./components/UserMenu";
 import Backlog from "./components/Boards/Backlog/Backlog";
 import OtherBoard from "./components/Boards/OtherBoards/OtherBoards";
+import { useEffect } from "react";
 
 function App() {
-  const [boardsData, setBoardsData] = useState([
-    {
-      id: 1,
-      title: "Backlog",
-      items: [],
-    },
-    {
-      id: 2,
-      title: "Ready",
-      items: [],
-    },
-    {
-      id: 3,
-      title: "In Progress",
-      items: [],
-    },
-    {
-      id: 4,
-      title: "Finished",
-      items: [],
-    },
-  ]);
+  const [boardsData, setBoardsData] = useState(
+    JSON.parse(localStorage.getItem("todo")) || [
+      {
+        id: 1,
+        title: "Backlog",
+        items: [],
+      },
+      {
+        id: 2,
+        title: "Ready",
+        items: [],
+      },
+      {
+        id: 3,
+        title: "In Progress",
+        items: [],
+      },
+      {
+        id: 4,
+        title: "Finished",
+        items: [],
+      },
+    ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(boardsData));
+  }, [boardsData]);
 
   // Добавление задачи в Backlog
   const addTaskBacklog = (userInput) => {
@@ -34,14 +41,14 @@ function App() {
       const newItem = {
         id: Math.random().toString(36).substr(2, 9),
         title: userInput,
-        complete: false,
       };
-      setBoardsData([
+      const newTodos = [
         { ...boardsData[0], items: [...boardsData[0].items, newItem] },
         { ...boardsData[1] },
         { ...boardsData[2] },
         { ...boardsData[3] },
-      ]);
+      ];
+      setBoardsData(newTodos);
     }
   };
 

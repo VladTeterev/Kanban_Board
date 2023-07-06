@@ -29,7 +29,7 @@ const Backlog = ({ boardData, addTask, removeTask }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSubmit(e);
-      setBtn(!btn)
+      setBtn(!btn);
     }
   };
 
