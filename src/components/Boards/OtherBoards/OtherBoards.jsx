@@ -1,8 +1,11 @@
 import { useState } from "react";
 import s from "./OtherBoards.module.css";
+import { Link } from "react-router-dom";
 
-const OtherBoard = ({ boardData, prevBoardData, addTask }) => {
+const OtherBoard = ({ boardData, prevBoardData, addTask, getOpenTask }) => {
   const [btn, setBtn] = useState(false);
+
+  const boardName = boardData.title;
 
   const handleTask = (item) => {
     setBtn(!btn);
@@ -16,7 +19,7 @@ const OtherBoard = ({ boardData, prevBoardData, addTask }) => {
       {boardData.items.map((item) =>
         !boardData.items.complite ? (
           <div key={item.id} className="board__item">
-            {item.title}
+            <Link to={`/${boardName}/${item.id}`} className='board__link' onClick={() => getOpenTask(item)} >{item.title}</Link>
           </div>
         ) : null
       )}

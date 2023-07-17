@@ -1,0 +1,74 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 590px;
+    min-width: 1235px;
+    background-color: rgba(0, 121, 191, 1);
+}
+
+.page__container {
+    min-height: 548px;
+    width: 1181px;
+    padding: 22px 28px;
+    padding-right: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.page__title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.exit__button {
+    background: url(../../img/closeLink2.svg) 0 0 no-repeat;
+    height: 32px;
+    width: 32px;
+}
+
+.text {
+    word-wrap: break-word;
+    width: 621px;
+}
+
+.flex__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page__text {
+    min-height: 136px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.textarea{
+    display: flex;
+    border: 1px solid ;
+    width: 621px;
+}
+
+.btn__addDescription {
+    border: 1px solid rgba(94, 108, 132, 1);
+    font-size: 13px;
+    height: 25px;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+.btn__submit {
+    height: 29px;
+    width: 102px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 121, 191, 1);
+}
+
+.hide {
+    display: none;
+}

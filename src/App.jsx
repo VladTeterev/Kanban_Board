@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import UserMenu from "./components/UserMenu";
-import Backlog from "./components/Boards/Backlog/Backlog";
-import OtherBoard from "./components/Boards/OtherBoards/OtherBoards";
+import MainHomePage from "./components/MainHomePage/MainHomePage";
+import LinkPage from "./components/LinkPage/LinkPage";
 import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [boardsData, setBoardsData] = useState(
@@ -20,7 +20,7 @@ function App() {
       },
       {
         id: 3,
-        title: "In Progress",
+        title: "InProgress",
         items: [],
       },
       {
@@ -41,6 +41,7 @@ function App() {
       const newItem = {
         id: Math.random().toString(36).substr(2, 9),
         title: userInput,
+        description: "",
       };
       const newTodos = [
         { ...boardsData[0], items: [...boardsData[0].items, newItem] },
@@ -79,56 +80,98 @@ function App() {
     );
   };
 
-  // Кол-во активных задач
-  const numberOfActiveTasks = () => {
-    const sumItems =
-      boardsData[0].items.length +
-      boardsData[1].items.length +
-      boardsData[2].items.length;
-    if (sumItems) {
-      return sumItems;
-    } else {
-      return null;
-    }
+  const [openTask, setOpenTask] = useState();
+  const getOpenTask = (openTask) => {
+    setOpenTask(openTask);
+  };
+
+  // Добавление описания в задачу
+  const addDiscriptionOfTask = (text, id, taskId) => {
+    console.log(text, id, taskId);
+    setBoardsData(
+      boardsData.map((board) => {
+        if (board.id === id) {
+          return {
+            ...board,
+            items: board.items.map((item) => {
+              if (item.id === taskId) {
+                return {
+                  ...item,
+                  description: text,
+                };
+              }
+              return item;
+            }),
+          };
+        }
+        return board;
+      })
+    );
   };
 
   return (
     <div className="App">
-      <header className="header">
-        <h1 className="header__name">Awesome Kanban Board</h1>
-        <UserMenu />
-      </header>
-
-      <main className="main">
-        <div className="board-container">
-          <Backlog
-            key={boardsData[0].id}
-            boardData={boardsData[0]}
-            addTask={addTaskBacklog}
-          />
-          <OtherBoard
-            boardData={boardsData[1]}
-            prevBoardData={boardsData[0]}
-            addTask={changeCardStage}
-          />
-          <OtherBoard
-            boardData={boardsData[2]}
-            prevBoardData={boardsData[1]}
-            addTask={changeCardStage}
-          />
-          <OtherBoard
-            boardData={boardsData[3]}
-            prevBoardData={boardsData[2]}
-            addTask={changeCardStage}
-          />
-        </div>
-      </main>
-
-      <footer className="footer">
-        <span>Active tasks: {numberOfActiveTasks()}</span>
-        <span>Finished tasks: {boardsData[3].items.length}</span>
-        <span>Kanban board by Vlad, 2023</span>
-      </footer>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <MainHomePage
+              boardsData={boardsData}
+              addTaskBacklog={addTaskBacklog}
+              changeCardStage={changeCardStage}
+              getOpenTask={getOpenTask}
+            />
+          }
+        />
+        <Route
+          path="/Backlog/:id"
+          element={
+            <LinkPage
+              key={boardsData[0]}
+              actualBoardId={boardsData[0].id}
+              openTask={openTask}
+              boardsData={boardsData}
+              addDiscriptionOfTask={addDiscriptionOfTask}
+            />
+          }
+        />
+        <Route
+          path="/Ready/:id"
+          element={
+            <LinkPage
+              key={boardsData[1]}
+              actualBoardId={boardsData[1].id}
+              openTask={openTask}
+              boardsData={boardsData}
+              addDiscriptionOfTask={addDiscriptionOfTask}
+            />
+          }
+        />
+        <Route
+          path="/InProgress/:id"
+          element={
+            <LinkPage
+              key={boardsData[2]}
+              actualBoardId={boardsData[2].id}
+              openTask={openTask}
+              boardsData={boardsData}
+              addDiscriptionOfTask={addDiscriptionOfTask}
+            />
+          }
+        />
+        <Route
+          path="/Finished/:id"
+          element={
+            <LinkPage
+              key={boardsData[3]}
+              actualBoardId={boardsData[3].id}
+              openTask={openTask}
+              boardsData={boardsData}
+              addDiscriptionOfTask={addDiscriptionOfTask}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }

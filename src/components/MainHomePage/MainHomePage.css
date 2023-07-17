@@ -1,0 +1,27 @@
+.main {
+    min-height: 600px;
+    padding: 8px;
+    padding-top: 20px;
+    padding-bottom: 32px;
+    background: rgba(0, 121, 191, 1);
+}
+
+.board-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1234px){
+    .board-container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 100px 0;
+        padding-left: 13px;
+
+    }
+
+    .main {
+        padding: 0px;
+    }
+}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import s from "./Backlog.module.css";
-const Backlog = ({ boardData, addTask, removeTask }) => {
+import { Link } from "react-router-dom";
+
+const Backlog = ({ boardData, addTask, getOpenTask }) => {
   const [btn, setBtn] = useState(false);
   const [userInput, setUserInput] = useState("");
 
@@ -39,7 +41,7 @@ const Backlog = ({ boardData, addTask, removeTask }) => {
       <div className="board__title">{boardData.title}</div>
       {boardData.items.map((item) => (
         <div key={item.id} className="board__item">
-          {item.title}
+          <Link to={`/Backlog/${item.id}`} className='board__link' onClick={() => getOpenTask(item)}>{item.title}</Link>
         </div>
       ))}
 

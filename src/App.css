@@ -76,6 +76,10 @@ a:hover {
     text-decoration: none;
 }
 
+a {
+    color: rgba(0, 0, 0, 1);
+}
+
 ul li {
     list-style: none;
 }
@@ -93,34 +97,6 @@ body {
 
 .App {
     max-width: 1235px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 55px;
-    padding-left: 20px;
-    background: rgba(0, 103, 163, 1);
-}
-
-.header__name {
-    font-size: 28px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-}
-
-.main {
-    min-height: 600px;
-    padding: 8px;
-    padding-top: 20px;
-    padding-bottom: 32px;
-    background: rgba(0, 121, 191, 1);
-}
-
-.board-container {
-    display: flex;
-    justify-content: space-between;
 }
 
 .board {
@@ -170,21 +146,6 @@ body {
     background-image: url(./img/plus.svg);
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 55px;
-    padding: 0 20px;
-    background: rgba(0, 103, 163, 1);
-}
-
-span {
-    font-size: 18px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
-}
-
 @media screen and (max-width: 1234px){
     body {
         height: 1500px;
@@ -201,18 +162,6 @@ span {
 
     .header__name {
         display: none;
-    }
-
-    .board-container {
-        flex-direction: column;
-        justify-content: center;
-        padding: 100px 0;
-        padding-left: 13px;
-
-    }
-
-    .main {
-        padding: 0px;
     }
 
     .board {
