@@ -87,7 +87,6 @@ function App() {
 
   // Добавление описания в задачу
   const addDiscriptionOfTask = (text, id, taskId) => {
-    console.log(text, id, taskId);
     setBoardsData(
       boardsData.map((board) => {
         if (board.id === id) {
