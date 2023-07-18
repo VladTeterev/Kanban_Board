@@ -12,3 +12,9 @@ span {
     font-weight: 400;
     color: rgba(255, 255, 255, 1);
 }
+
+@media screen and (max-width: 1234px) {
+    .footer {
+        display: none;
+    }
+}

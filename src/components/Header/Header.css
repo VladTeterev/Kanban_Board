@@ -63,3 +63,10 @@
     .user-menu__item:hover {
         background: rgba(51, 153, 255, 0.2);
     }
+
+    @media screen and (max-width: 1234px) {
+        .header {
+            justify-content: end;
+            background-color: rgba(0, 121, 191, 1);
+        }
+    }

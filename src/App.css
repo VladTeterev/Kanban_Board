@@ -88,15 +88,13 @@ img {
     vertical-align: top;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    background: #E5E5E5;
-}
 
 .App {
-    max-width: 1235px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
 }
 
 .board {
@@ -147,17 +145,13 @@ body {
 }
 
 @media screen and (max-width: 1234px){
-    body {
-        height: 1500px;
-    }
 
     .App {
-        width: 338px;
-    }
-
-    .header {
-        justify-content: end;
-        background-color: rgba(0, 121, 191, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
     }
 
     .header__name {
@@ -169,7 +163,4 @@ body {
         width: 282px;
     }
     
-    .footer {
-        display: none;
-    }
 }
