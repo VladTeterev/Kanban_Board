@@ -43,19 +43,22 @@ function App() {
         title: userInput,
         description: "",
       };
-      const newTodos = [
-        { ...boardsData[0], items: [...boardsData[0].items, newItem] },
-        { ...boardsData[1] },
-        { ...boardsData[2] },
-        { ...boardsData[3] },
-      ];
-      setBoardsData(newTodos);
+
+      const firstBoardId = 1;
+
+      setBoardsData((boardsData) =>
+        boardsData.map((board) =>
+          board.id === firstBoardId
+            ? { ...board, items: [...board.items, newItem] }
+            : { ...board }
+        )
+      );
     }
   };
 
   // Добавление задачи из дропдауна и удаление из предыдущей
   const changeCardStage = (item, id) => {
-    setBoardsData(
+    setBoardsData((boardsData) =>
       boardsData.map((board) =>
         board.id === id
           ? { ...board, items: [...board.items, item] }
@@ -87,7 +90,7 @@ function App() {
 
   // Добавление описания в задачу
   const addDiscriptionOfTask = (text, id, taskId) => {
-    setBoardsData(
+    setBoardsData((boardsData) =>
       boardsData.map((board) => {
         if (board.id === id) {
           return {
